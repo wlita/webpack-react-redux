@@ -1,5 +1,6 @@
 var path = require('path')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var webpack = require('webpack')
 
 module.exports = {
@@ -30,42 +31,24 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          { loader: 'postcss-loader' ,
-            options: {
-                plugins: [
-                  require('autoprefixer')
-                ]
-            }
-          }
-        ]
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: ["css-loader", 'postcss-loader']
+        })
       },
       {
         test: /\.scss$/,
-        use: ['style-loader', 
-              'css-loader', 
-              { loader: 'postcss-loader' ,
-                  options: {
-                      plugins: [
-                        require('autoprefixer')
-                      ]
-                  }
-                }, 'sass-loader']
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: ["css-loader", 'postcss-loader', 'sass-loader']
+        })
       },
       {
         test: /\.less$/,
-        use: ['style-loader', 
-              'css-loader', 
-              { loader: 'postcss-loader' ,
-                  options: {
-                      plugins: [
-                        require('autoprefixer')
-                      ]
-                  }
-              }, 
-              'less-loader']
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: ["css-loader", 'postcss-loader', 'less-loader']
+        })
       },
       {
         test: /\.(jpg|png|gif)$/,
@@ -93,6 +76,9 @@ module.exports = {
       filename: 'index.html',
       template: 'index.html',
       chunksSortMode: 'dependency'
-    })
+    }),
+
+    new ExtractTextPlugin("[name].css")
+
   ]
 }

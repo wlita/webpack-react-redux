@@ -1,8 +1,14 @@
 import React from 'react';
-import {render} from 'react-dom';
-import './style.scss'
+import { render } from 'react-dom';
+import './style.css'
+
+class Hello extends React.Component {
+	render () {
+		return (<p> hello world !!! </p>)
+	}
+}
 
 render(
-	<p>12312312</p>,
-	document.getElementById('root')
-)
+  <Hello />,
+  document.getElementById('root')
+);
