@@ -7,14 +7,22 @@ class Title extends Component {
 }
 
 class Header extends Component {
+	constructor () {
+		super()
+		this.state = { showToast1: false, showToast2: false }	
+	}
 	
 	toast2 = (e) => {
-        console.log(this)
-		console.log(e.target.innerHTML)
+        this.setState({
+        	showToast1: !this.state.showToast1
+        })
     }
 
 	render () {
-		return <div onClick={ this.toast2 }> <Title/> this's Header ...... </div>
+		return (<div onClick={ this.toast2 }> 
+			<Title/> this's Header ...... 
+			{ this.state.showToast1 ? '点赞' : '未点赞'}
+		</div>)
 	}	
 }
 

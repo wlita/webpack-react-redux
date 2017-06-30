@@ -1,5 +1,9 @@
 # webpack2 + react + redux + react-router + yarn 搭建脚手架
 
+｀｀｀
+    感谢作者（小书）的贡献：http://huziketang.com/books/react/lesson1
+｀｀｀
+
 ```
 webpack2
 
