@@ -1,31 +1,40 @@
-import React from 'react';
-import { render } from 'react-dom';
-import './style.css'
+import React from 'react'
+import { render } from 'react-dom'
+import RouterMap from './router'
+import { Provider } from 'react-redux'
+import configureStore from './store/configureStore'
 
-class Hello extends React.Component {
-    constructor(props, context) {
-        super(props, context);
-        this.state = {
-            // 显示当前时间
-            now: Date.now()
-        }
-    }
-    render() {
-        return (
-            <div>
-                <p>hello world {this.state.now}</p>
-            </div>
-        )
-    }
-}
-
-// class Hello extends React.Component {
-// 	render () {
-// 		return (<p> hello world !!! </p>)
-// 	}
-// }
+const store = configureStore()
 
 render(
-  <Hello />,
-  document.getElementById('root')
-);
+	<Provider store={store}>
+		<RouterMap/>
+	</Provider>
+	, document.getElementById('root')
+)
+
+// console.log(process.env.NODE_ENV)
+// console.log(store.dispatch({type: 'A'}))
+// console.log(store.getState())
+// console.log(store.dispatch({type: 'A'}))
+// console.log(store.getState())
+// console.log(store.dispatch({type: 'B'}))
+// console.log(store.getState())
+
+// function addTodo(xxx) {
+//   return {
+//     type: 'A',
+//     xxx
+//   };
+// }
+
+// store.dispatch(addTodo('xxxx'))
+
+// store.dispatch(function(dispatch) {
+
+// 	fetch('http://localhost:7777/api/homead', {
+// 		method: "get"
+// 	}).then(response => response.text())
+//       .then(json => console.log(json))
+// })
+

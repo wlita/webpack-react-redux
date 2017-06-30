@@ -7,7 +7,7 @@
     "start": "webpack-dev-server --open --env=dev --progress --colors",
     "build": "rm -rf ./dist && webpack --env=pro --progress --colors",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "mock": "node ./mock/server.js"
+    "mock": "node --harmony ./mock/server.js"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.1",
@@ -22,6 +22,9 @@
     "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.28.0",
+    "koa": "^2.3.0",
+    "koa-body": "^2.3.0",
+    "koa-router": "^7.2.1",
     "less": "^2.7.2",
     "less-loader": "^4.0.4",
     "node-sass": "^4.5.3",
@@ -30,6 +33,8 @@
     "postcss-loader": "^2.0.6",
     "postcss-modules-values": "^1.3.0",
     "react-hot-loader": "^1.3.1",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "transform-runtime": "^0.0.0",
@@ -41,9 +46,15 @@
     "webpack-merge": "^4.1.0"
   },
   "peerDependencies": {
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
+    "react-router-dom": "^4.1.1",
     "redux": "^3.7.0"
+  },
+  "dependencies": {
+    "es6-promise": "^4.1.0",
+    "react": "^15.6.1",
+    "react-redux": "^5.0.5",
+    "react-router": "^4.1.1",
+    "whatwg-fetch": "^2.0.3"
   }
 }

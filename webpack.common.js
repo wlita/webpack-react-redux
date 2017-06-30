@@ -6,7 +6,11 @@ var webpack = require('webpack')
 module.exports = {
   context: path.join(__dirname, '/src'),
 
-  entry: 'index.js',
+  entry: [
+    'whatwg-fetch',
+    'es6-promise',
+    'index.js'
+  ],
 
   output: {
     path: path.join(__dirname, '/dist'),
@@ -33,21 +37,21 @@ module.exports = {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
           fallback: "style-loader",
-          use: ["css-loader", 'postcss-loader']
-        })
-      },
-      {
-        test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: ["css-loader", 'postcss-loader', 'sass-loader']
+          use: [
+            { loader: 'css-loader', options: { modules: true } },
+            'postcss-loader'
+          ]
         })
       },
       {
         test: /\.less$/,
         use: ExtractTextPlugin.extract({
           fallback: "style-loader",
-          use: ["css-loader", 'postcss-loader', 'less-loader']
+          use: [
+            { loader: 'css-loader', options: { modules: true } },
+           'postcss-loader', 
+           'less-loader'
+          ]
         })
       },
       {

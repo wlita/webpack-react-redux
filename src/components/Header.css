@@ -1,0 +1,13 @@
+.hc{
+	height: 80px;
+	width: 100%;
+	background: #999;
+	line-height: 80px;
+
+	.goback{
+		float: left;
+	}
+	.title{
+		float: left;
+	}
+}
